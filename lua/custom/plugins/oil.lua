@@ -3,7 +3,24 @@ return {
     'stevearc/oil.nvim',
     ---@module 'oil'
     ---@type oil.SetupOpts
-    opts = {},
+    opts = {
+      columns = {
+        'icon',
+        'permissions',
+        'size',
+        'mtime',
+      },
+    },
+    suggestion = {
+      enabled = not vim.g.ai_cmp,
+      auto_trigger = true,
+      hide_during_completion = vim.g.ai_cmp,
+      keymap = {
+        accept = false, -- handled by nvim-cmp / blink.cmp
+        next = '<M-]>',
+        prev = '<M-[>',
+      },
+    },
     -- Optional dependencies
     dependencies = { { 'nvim-mini/mini.icons', opts = {} } },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
