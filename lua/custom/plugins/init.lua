@@ -13,4 +13,5 @@ return {
   require 'custom.plugins.flash',
   require 'custom.plugins.autosave',
   require 'custom.plugins.copilot',
+  require 'custom.plugins.typescript',
 }
