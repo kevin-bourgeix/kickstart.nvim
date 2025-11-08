@@ -10,6 +10,9 @@ return {
         'size',
         'mtime',
       },
+      view_options = {
+        show_hidden = true,
+      },
     },
     suggestion = {
       enabled = not vim.g.ai_cmp,
