@@ -165,10 +165,10 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
-vim.o.expandtab = true     -- Use spaces instead of tabs
-vim.o.shiftwidth = 4       -- Number of spaces to use for each step of (auto)indent
-vim.o.tabstop = 4          -- Number of spaces that a <Tab> in the file counts for
-vim.o.smartindent = true   -- Insert indents automatically
+vim.o.expandtab = true -- Use spaces instead of tabs
+vim.o.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
+vim.o.tabstop = 4 -- Number of spaces that a <Tab> in the file counts for
+vim.o.smartindent = true -- Insert indents automatically
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -688,6 +688,8 @@ require('lazy').setup({
         ts_ls = {},
         --
         eslint = {},
+        cssls = {},
+        tailwindcss = {},
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -841,7 +843,7 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'super-tab',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -856,7 +858,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
 
       sources = {
@@ -885,6 +887,24 @@ require('lazy').setup({
 
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },
+      cmdline = {
+        enabled = true,
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        sources = function()
+          local type = vim.fn.getcmdtype()
+          if type == '/' or type == '?' then
+            return { 'buffer' }
+          end
+          if type == ':' or type == '@' then
+            return { 'cmdline', 'path' }
+          end
+          return {}
+        end,
+        completion = {
+          menu = { auto_show = true },
+          ghost_text = { enabled = false },
+        },
+      },
     },
   },
 
@@ -956,7 +976,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'css' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {

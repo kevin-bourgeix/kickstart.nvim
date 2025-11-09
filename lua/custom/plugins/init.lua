@@ -14,4 +14,7 @@ return {
   require 'custom.plugins.autosave',
   require 'custom.plugins.copilot',
   require 'custom.plugins.typescript',
+  require 'custom.plugins.tailwind',
+  require 'custom.plugins.css',
+  require 'custom.plugins.noice',
 }
