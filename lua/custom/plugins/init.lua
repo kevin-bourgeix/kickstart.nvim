@@ -11,10 +11,11 @@ return {
   require 'custom.plugins.term',
   -- require 'custom.plugins.neoscroll',
   require 'custom.plugins.flash',
-  require 'custom.plugins.autosave',
+  -- require 'custom.plugins.autosave',
   require 'custom.plugins.copilot',
   require 'custom.plugins.typescript',
   require 'custom.plugins.tailwind',
   require 'custom.plugins.css',
   require 'custom.plugins.noice',
+  require 'custom.plugins.quicksave',
 }

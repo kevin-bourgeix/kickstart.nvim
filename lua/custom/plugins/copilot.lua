@@ -5,6 +5,8 @@ vim.keymap.set("n", "<esc>", function()
     end
 end, { desc = "Clear Copilot suggestion or fallback" })
 
+-- open copilot panel with <leader>P
+vim.keymap.set("n", "<leader>P", ":Copilot panel<CR>", { desc = "Open Copilot panel" })
 return {
   {
     'zbirenbaum/copilot.lua',
@@ -19,7 +21,7 @@ return {
         help = true,
       },
       nes = {
-        enabled = true,
+        enabled = false,
         keymap = {
           jump_prev = '<up>',
           jump_next = '<down>',
