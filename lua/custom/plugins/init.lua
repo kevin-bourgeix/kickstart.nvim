@@ -18,4 +18,5 @@ return {
   require 'custom.plugins.css',
   require 'custom.plugins.noice',
   require 'custom.plugins.quicksave',
+  require 'custom.plugins.lualine'
 }
